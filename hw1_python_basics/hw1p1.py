@@ -6,5 +6,5 @@ list_of_heights_cm = [175, 162, 178, 182]
 
 for name in list_of_names:
   print("The name {:} is {:} letters long".format(name, len(name)))
-  
+  print ("testing")  
 
