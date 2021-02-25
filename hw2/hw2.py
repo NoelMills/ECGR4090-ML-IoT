@@ -48,18 +48,18 @@ model.summary()
 
 #In[6]
 #Part 6
-#model.compile(optimizer='adam', 
-#                loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-#                metrics=['accuracy'])
-#train_hist = model.fit(train_images, train_labels, epochs=50, validation_data=(test_images, test_labels))
-#test_lost, test_acc = model.evaluate(test_images, test_labels, verbose=2)
-#print('\nTest accuracy: ', test_acc)
+model.compile(optimizer='adam', 
+                loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+                metrics=['accuracy'])
+train_hist = model.fit(train_images, train_labels, epochs=50, validation_data=(test_images, test_labels))
+test_lost, test_acc = model.evaluate(test_images, test_labels, verbose=2)
+print('\nTest accuracy: ', test_acc)
 
 #In[7]
 from tensorflow.keras.preprocessing import image
 import PIL
 import PIL.Image
-timage = image.load_img('kitten.jpg', target_size=(32,32))
+timage = image.load_img('kat.jpg', target_size=(32,32))
 timage = image.img_to_array(timage)
 timage = np.array([timage/255])
 predict = model.predict(timage,batch_size=1)
@@ -71,7 +71,7 @@ print(predict_class)
 #In[8]
 model2 = Sequential()
 
-model2.add(tf.keras.layers.DepthwiseConv2D(kernal_size = (3,3), strides = (2,2) , padding = 'same', input_shape =(32,32,3)))
+model2.add(tf.keras.layers.DepthwiseConv2D(kernel_size= (3,3), strides= (2,2), padding= 'same', input_shape = (32, 32, 3)))
 model2.add(Conv2D(32, (3,3), strides = (2,2), padding = 'same', activation = 'relu'))
 model2.add(tf.keras.layers.DepthwiseConv2D(kernel_size= (3,3), strides= (2,2), padding= 'same'))
 model2.add(Conv2D(64, (1,1), strides = (1,1), padding = 'same', activation = 'relu'))
